@@ -1,0 +1,140 @@
+/* Base Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background: #f4f4f4;
+  color: aqua;
+}
+
+/* Grid Layout */
+.container {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "nav"
+    "main"
+    "sidebar"
+    "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+}
+
+/* Desktop Grid */
+@media (min-width: 1024px) {
+  .container {
+    grid-template-areas:
+      "header header"
+      "nav nav"
+      "main sidebar"
+      "footer footer";
+    grid-template-columns: 3fr 1fr;
+  }
+}
+
+.header {
+  grid-area: header;
+  background: #2c3e50;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+
+.nav {
+  grid-area: nav;
+  background: #34495e;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+}
+
+.nav-list li {
+  margin: 0.5rem;
+}
+
+.nav-list a {
+  color: #0f0e0e;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.nav-list a:hover {
+  background: #2c3e50;
+  border-radius: 4px;
+}
+
+.main {
+  grid-area: main;
+  padding: 1rem;
+}
+
+/* Cards with Flexbox */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card {
+  background: #030303;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  flex: 1 1 calc(33.333% - 1rem);
+  padding: 1rem;
+  min-width: 250px;
+}
+
+.sidebar {
+  grid-area: sidebar;
+  background: #ecf0f1;
+  padding: 1rem;
+}
+
+.footer {
+  grid-area: footer;
+  background: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+}
+
+/* Tablet View */
+@media (max-width: 1023px) {
+  .container {
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "sidebar"
+      "footer";
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    flex: 1 1 calc(50% - 1rem);
+  }
+}
+
+/* Mobile View */
+@media (max-width: 600px) {
+  .card {
+    flex: 1 1 100%;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: center;
+  }
+}
